@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: radial-gradient(#333, #000); /* Smooth background gradient */
+}
+
+.falling-leaves {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 8em;
+  font-weight: 700;
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7); /* Add shadow for depth */
+  pointer-events: none; /* Disable interaction */
+  z-index: 1;
+}
+
+.leaf {
+  position: absolute;
+  top: -200px;
+  opacity: 0;
+  animation: fall linear infinite;
+  transform-origin: center;
+  will-change: transform, opacity; /* Optimize performance */
+}
+
+/* Dynamic leaf animation */
+@keyframes fall {
+  0% {
+    transform: translateY(-200px) translateX(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(50vh) translateX(100px) rotate(90deg) scale(1.1); /* Midpoint with slight scaling and rotation */
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(110vh) translateX(-100px) rotate(180deg) scale(0.9); /* Rotate and shrink towards the bottom */
+    opacity: 0;
+  }
+}
